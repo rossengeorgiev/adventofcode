@@ -4,8 +4,8 @@ import re
 print("Input (empty line to finish): ")
 
 def V(var):
-    result = eval(circuit[var])
-    circuit[var] = str(result)
+    result = eval(live_circuit[var])
+    live_circuit[var] = str(result)
     return result
 
 operations = {
@@ -28,4 +28,11 @@ for line in iter(raw_input, ''):
 
     circuit[var] = ' '.join(expr)
 
-print("Answer: %d" % V('a'))
+live_circuit = circuit.copy()
+answer = V('a')
+print("Answer (part1): %d" % answer)
+
+live_circuit = circuit.copy()
+live_circuit['b'] = str(answer)
+answer = V('a')
+print("Answer (part2): %d" % answer)
