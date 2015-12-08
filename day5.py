@@ -10,8 +10,18 @@ def naughty_or_nice(line):
         return False
     return True
 
+def naughty_or_nice_2point0(line):
+    if not findall("([a-z]{2}).*\\1", line):
+        return False
+    if not findall("([a-z])[a-z]\\1", line):
+        return False
+    return True
+
 print("Input (empty line to finish): ")
 
-answer = map(naughty_or_nice, iter(raw_input, '')).count(True)
+words = list(iter(raw_input, ''))
 
-print("Answer: %d" % answer)
+answer = map(naughty_or_nice, words).count(True)
+print("Answer (part1): %d" % answer)
+answer = map(naughty_or_nice_2point0, words).count(True)
+print("Answer (part2): %d" % answer)
