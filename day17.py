@@ -1,4 +1,3 @@
-
 from __future__ import print_function
 import re
 
@@ -18,10 +17,7 @@ def combinations(containers, liters):
 print("Input (empty line to finish): ")
 
 containers = map(int, iter(raw_input, ''))
-diff_ways = list(combinations(containers, 150))
+diff_ways = map(len, combinations(containers, 150))
 
 print("Answer (part1): %s" % len(diff_ways))
-
-diff_ways = map(len, diff_ways)
-
 print("Answer (part2): %s" % diff_ways.count(min(diff_ways)))
