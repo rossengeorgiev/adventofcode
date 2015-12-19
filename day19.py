@@ -1,4 +1,5 @@
 from __future__ import print_function
+from random import shuffle
 
 def mutate(a, b):
     i = 0
@@ -18,12 +19,18 @@ target = mol
 part2 = 0
 
 while target != 'e':
+    tmp = target
     for a, b in reps:
         if b not in target:
             continue
 
         target = target.replace(b, a, 1)
         part2 += 1
+
+    if tmp == target:
+        target = mol
+        part2 = 0
+        shuffle(reps)
 
 print("Answer (part1): %s" % part1)
 print("Answer (part2): %s" % part2)
