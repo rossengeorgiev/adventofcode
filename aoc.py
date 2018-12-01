@@ -11,9 +11,9 @@ def aoc_web_session():
     session = requests.Session()
 
     print("This solution automatically fetches your input from https://adventofcode.com")
-    print("Log-in and use the browser dev tools grab the value of the 'session' cookie")
 
     if 'AOC_COOKIE' not in os.environ:
+        print("Log-in and use the browser dev tools grab the value of the 'session' cookie")
         print("(you can use the AOC_COOKIE environment variable)")
 
     while True:
