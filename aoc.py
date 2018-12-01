@@ -1,4 +1,5 @@
 import os
+import re
 import requests
 
 try:
@@ -28,6 +29,8 @@ def aoc_web_session():
         resp.raise_for_status()
 
         if '[Log Out]' in resp.text:
+            m = re.search(r'<div class="user">(.*?)<span class="star-count">(\d+)\*?</span>', resp.text)
+            print("Logged in as: %s (%s stars)" % (m.group(1), m.group(2)))
             break
         else:
             print("Failed to login with cookie")

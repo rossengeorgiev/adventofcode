@@ -6,6 +6,7 @@ Make sure to install the requirements `pip install -r requirements.txt`
 Each day is a separate script, and it pulls your input directly from https://adventofcode.com/
 You can enter your `session` cookie each time or set it as `AOC_COOKIE` environment variable.
 
+Works on python2 and python3.
 
 ```bash
 $ python day1.py
