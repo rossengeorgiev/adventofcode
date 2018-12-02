@@ -2,21 +2,16 @@ from aoc import aoc_web_session
 web = aoc_web_session()
 
 from collections import Counter
+from functools import reduce
 from itertools import combinations
 from difflib import SequenceMatcher
 
-ids = [x for x in web.get('https://adventofcode.com/2018/day/2/input').text.split('\n')]
+ids = [x for x in web.get('https://adventofcode.com/2018/day/2/input').text.split('\n') if x]
 
-twos, threes = 0, 0
+freqs = reduce(lambda a, b: a + b,
+               (Counter(set(Counter(box_id).values())) for box_id in ids))
 
-for box_id in ids:
-    counts = set(Counter(box_id).values())
-    if 3 in counts:
-        threes += 1
-    if 2 in counts:
-        twos += 1
-
-print("Part 1: %s" % (twos * threes))
+print("Part 1: %s" % (freqs[2] * freqs[3]))
 
 for a, b in combinations(ids, 2):
     blocks = list(SequenceMatcher(a=a, b=b).get_matching_blocks())
