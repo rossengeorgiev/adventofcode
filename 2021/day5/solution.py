@@ -25,8 +25,8 @@ for x1, y1, x2, y2 in lines:
         y += ydir if y != y2 else 0
 
 
-part1 = len(list(filter(lambda v: v >= 2, line_map1.values())))
-part2 = len(list(filter(lambda v: v >= 2, line_map2.values())))
+part1 = sum((1 for v in line_map1.values() if v >= 2))
+part2 = sum((1 for v in line_map2.values() if v >= 2))
 
 print("Part1:", part1)
 print("Part2:", part2)
