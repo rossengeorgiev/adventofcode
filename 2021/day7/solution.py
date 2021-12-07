@@ -25,14 +25,14 @@ def find_position(crabs, cost=calc_fuel):
 
     while True:
         curr = cost(crabs, pos)
+        step = max(1, (step // 2))
+
         if curr > cost(crabs, pos + 1):
             pos += step
         elif curr > cost(crabs, pos - 1):
             pos -= step
         else:
             return curr
-
-        step = max(1, (step // 2))
 
 
 part1 = find_position(crabs)
