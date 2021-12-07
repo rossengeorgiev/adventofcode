@@ -14,7 +14,7 @@ def calc_fuel_part2(crabs, pos):
                map(lambda x: abs(x - pos), crabs)
                ))
 
-def find_position(crabs, func=calc_fuel):
+def find_position(crabs, cost=calc_fuel):
     start, end = min(crabs), max(crabs)
 
     if start > end:
@@ -24,10 +24,10 @@ def find_position(crabs, func=calc_fuel):
     pos = start + step
 
     while True:
-        curr = func(crabs, pos)
-        if curr > func(crabs, pos + 1):
+        curr = cost(crabs, pos)
+        if curr > cost(crabs, pos + 1):
             pos += step
-        elif curr > func(crabs, pos - 1):
+        elif curr > cost(crabs, pos - 1):
             pos -= step
         else:
             return curr
@@ -37,5 +37,5 @@ def find_position(crabs, func=calc_fuel):
 
 part1 = find_position(crabs)
 print("part1:", part1)
-part2 = find_position(crabs, func=calc_fuel_part2)
-print("part2:", part2) 
+part2 = find_position(crabs, cost=calc_fuel_part2)
+print("part2:", part2)
