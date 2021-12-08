@@ -40,10 +40,6 @@ for signals, reading in fp:
             one = set(signal)
         elif n == 4:
             four = set(signal)
-        elif n == 7:
-            seven = set(signal)
-        elif n == 8:
-            eight = set(signal)
 
     num = ''
     for signal in reading:
